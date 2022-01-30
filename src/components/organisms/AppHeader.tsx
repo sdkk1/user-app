@@ -11,7 +11,7 @@ export function AppHeader() {
     onClose()
   }
   const navigateUserManagement = () => {
-    navigate('/home/user/management')
+    navigate('/home/user/list')
     onClose()
   }
   const navigateSetting = () => {
@@ -41,7 +41,7 @@ export function AppHeader() {
           fontSize="sm"
         >
           <Box pr={4}>
-            <Link as={RouterLink} to="/home/user/management">
+            <Link as={RouterLink} to="/home/user/list">
               ユーザー一覧
             </Link>
           </Box>
