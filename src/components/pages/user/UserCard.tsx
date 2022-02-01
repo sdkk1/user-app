@@ -2,11 +2,13 @@ import { Box, Image, Stack, Text } from '@chakra-ui/react'
 import { USER_PROFILE_URL } from 'src/constants/User'
 
 type Props = {
+  userId: number
   userName: string
   fullName: string
+  onClick: (userId: number) => void
 }
 
-export function UserCard({ userName, fullName }: Props) {
+export function UserCard({ userId, userName, fullName, onClick }: Props) {
   return (
     <Box
       w="260px"
@@ -16,6 +18,7 @@ export function UserCard({ userName, fullName }: Props) {
       borderRadius="10px"
       shadow="md"
       _hover={{ cursor: 'pointer', opacity: 0.8 }}
+      onClick={() => onClick(userId)}
     >
       <Stack spacing={4} textAlign="center">
         <Image
