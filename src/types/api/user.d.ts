@@ -21,3 +21,7 @@ export type User = {
     bs: string
   }
 }
+
+export type LoginUser = {
+  isAdmin: boolean
+} & User

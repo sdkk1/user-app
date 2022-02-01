@@ -10,11 +10,14 @@ import { UserCard } from 'src/components/pages/user/UserCard'
 import { UserModalDetail } from 'src/components/pages/user/UserModalDetail'
 import { useUserList } from 'src/hooks/useUserList'
 import { User } from 'src/types/api/user'
+import { useLoginUser } from 'src/hooks/useLoginUser'
 
 export function UserList() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { loading, userList, getUserList } = useUserList()
   const [selectedUser, setSelectedUser] = useState<User | null>(null)
+  const { loginUser } = useLoginUser()
+  const isAdmin = loginUser?.isAdmin ?? false
 
   useEffect(() => {
     void getUserList()
@@ -53,7 +56,12 @@ export function UserList() {
           ))}
         </Wrap>
       )}
-      <UserModalDetail isOpen={isOpen} onClose={onClose} user={selectedUser} />
+      <UserModalDetail
+        isOpen={isOpen}
+        onClose={onClose}
+        user={selectedUser}
+        isAdmin={isAdmin}
+      />
     </>
   )
 }
